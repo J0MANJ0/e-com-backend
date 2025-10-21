@@ -1,6 +1,6 @@
 import express, { Request, Response } from 'express';
 import cors from 'cors';
-import { clerkMiddleware, getAuth } from '@clerk/express';
+import { clerkMiddleware } from '@clerk/express';
 import { protectAuth } from './middleware/auth.middleware.js';
 import categoryRouter from './routes/category.route.js';
 import productRouter from './routes/product.route.js';
