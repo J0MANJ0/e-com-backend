@@ -6,6 +6,8 @@ const TestPage = async () => {
 
   const token = await getToken();
 
+  console.log(token);
+
   const resProduct = await fetch('http://localhost:8000/test', {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -21,6 +23,16 @@ const TestPage = async () => {
       Authorization: `Bearer ${token}`,
     },
   });
+
+  const userOrders = await fetch('http://localhost:8001/user-orders', {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  const dataUserOrders = await userOrders.json();
+
+  console.log({ dataUserOrders });
 
   const dataOrder = await resOrder.json();
 
@@ -39,7 +51,7 @@ const TestPage = async () => {
   return (
     <div>
       TestPage: {dataPayment.message}
-      {dataPayment.userId}
+      {dataPayment.userId} Orders:{dataUserOrders.orders.length}
     </div>
   );
 };
