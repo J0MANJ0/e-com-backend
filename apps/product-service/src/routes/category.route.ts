@@ -5,12 +5,13 @@ import {
   getCategories,
   updateCategory,
 } from '../controllers/category.controller';
+import { protectAdminAuth } from '../middleware/auth.middleware';
 
 const categoryRouter: Router = Router();
 
-categoryRouter.post('/', createCategory);
-categoryRouter.put('/:id', updateCategory);
-categoryRouter.delete('/:id', deleteCategory);
+categoryRouter.post('/', protectAdminAuth, createCategory);
+categoryRouter.put('/:id', protectAdminAuth, updateCategory);
+categoryRouter.delete('/:id', protectAdminAuth, deleteCategory);
 categoryRouter.get('/', getCategories);
 
 export default categoryRouter;
