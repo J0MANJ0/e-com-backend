@@ -1,11 +1,13 @@
 import ProductList from '@/components/product-list';
 import Image from 'next/image';
 
+import type { ReactElement } from 'react';
+
 const Homepage = async ({
   searchParams,
 }: {
   searchParams: Promise<{ category: string }>;
-}) => {
+}): Promise<ReactElement> => {
   const category = (await searchParams).category;
   return (
     <div className=''>

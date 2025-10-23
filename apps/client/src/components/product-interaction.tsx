@@ -1,20 +1,22 @@
 'use client';
 
 import useCartStore from '@/store/cart-store';
-import { ProductType } from '@/types';
+import { ProductType } from '@repo/types';
 import { Minus, Plus, ShoppingCart } from 'lucide-react';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 
-const ProductInteraction = ({
-  product,
-  selectedSize,
-  selectedColor,
-}: {
+interface ProductInteractionProps {
   product: ProductType;
   selectedSize: string;
   selectedColor: string;
+}
+
+const ProductInteraction: React.FC<ProductInteractionProps> = ({
+  product,
+  selectedSize,
+  selectedColor,
 }) => {
   const router = useRouter();
   const pathname = usePathname();
